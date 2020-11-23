@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+//定义变量 这样写会有缓存，提高性能
+def app_android = getRootProject().ext.app_android
+
+def app_implementation = rootProject.ext.app_implementation
+
+def url = this.getRootProject().ext.url
+
+
+android {
+    compileSdkVersion app_android.compileSdkVersion
+    buildToolsVersion app_android.buildToolsVersion
+
+    defaultConfig {
+        applicationId app_android.applicationId
+        minSdkVersion app_android.minSdkVersion
+        targetSdkVersion app_android.targetSdkVersion
+        versionCode app_android.versionCode
+        versionName app_android.versionName
+
+        testInstrumentationRunner app_android.testInstrumentationRunner
+
+        // 这个方法接收三个非空的参数，第一个：确定值的类型，第二个：指定key的名字，第三个：传值（必须是String）
+        // 为什么需要定义这个？因为src代码中有可能需要用到跨模块交互，如果是组件化模块显然不行
+        // 切记：不能在android根节点，只能在defaultConfig或buildTypes节点下
+        //为了在java代码中能够使用这个变量
+        buildConfigField("boolean","isRelease",String.valueOf(isRelease))
+        javaCompileOptions{
+            annotationProcessorOptions{
+                arguments = [moduleName:project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        //打包的时候根据debug还是release来打包不同服务器环境的包
+        debug {
+            buildConfigField("String","SERVER_URL","\"${url.debug}\"")
+        }
+        release {
+            buildConfigField("String","SERVER_URL","\"${url.release}\"")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 源集 - 设置源集的属性，更改源集的 Java 目录或者自由目录等
+    // 注意：我们先加入进来，后续在学习哦
+    sourceSets {
+        main {
+            if (!isRelease) {
+                // 如果是组件化模式，需要单独运行时
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                java.srcDirs = ['src/main/java']
+                res.srcDirs = ['src/main/res']
+                resources.srcDirs = ['src/main/resources']
+                aidl.srcDirs = ['src/main/aidl']
+                assets.srcDirs = ['src/main/assets']
+            } else {
+                // 集成化模式，整个项目打包
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+//    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.0.3'
+
+    //一行加载所有依赖
+    app_implementation.each { k, v -> implementation v }
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation project(":common")
+
+    implementation project(":arouter_annotation")
+
+    annotationProcessor project(":arouter_compiler")
+
+    if (isRelease){ //如果是正式环境
+        implementation project(":order")
+        implementation project(":personal")
+    }
+}

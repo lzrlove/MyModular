@@ -1,0 +1,7 @@
+include ':arouter_compiler'
+include ':arouter_annotation'
+include ':common'
+include ':personal'
+include ':order'
+include ':app'
+rootProject.name = "MyModualr"

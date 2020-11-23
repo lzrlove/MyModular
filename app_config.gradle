@@ -1,0 +1,36 @@
+// 整个App项目的Gradle配置文件 公共的配置
+// ext 自定义增加我们的内容
+ext {
+
+    //区分正式环境和测试环境
+    isRelease = true
+
+    //Map存储
+    app_android = [
+            compileSdkVersion        : 30,
+            buildToolsVersion        : "30.0.2",
+            applicationId            : "com.lzr.modular",
+            minSdkVersion            : 21,
+            targetSdkVersion         : 30,
+            versionCode              : 1,
+            versionName              : "1.0",
+            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
+    ]
+
+    app_Id = [
+           "app": "com.lzr.modular",
+           "order": "com.lzr.order",
+           "personal": "com.lzr.personal"
+    ]
+
+    url = [
+            "debug": "https://192.666.333.333/debug",
+            "release": "https://192.777.333.333/debug"
+    ]
+
+    app_implementation = [
+            "appcompat": 'androidx.appcompat:appcompat:1.2.0',
+            "constraintlayout": 'androidx.constraintlayout:constraintlayout:2.0.3'
+    ]
+
+}
