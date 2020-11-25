@@ -1,15 +1,9 @@
 package com.lzr.arouter_annotation.bean;
 
-import com.sun.xml.internal.fastinfoset.tools.StAX2SAXReader;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
-import java.security.interfaces.ECPrivateKey;
 
 import javax.lang.model.element.Element;
-import javax.print.DocFlavor;
 
-import jdk.nashorn.internal.ir.ReturnNode;
 
 public class RouterBean {
     public enum TypeEnum{
@@ -51,6 +45,22 @@ public class RouterBean {
 
     public String getGroup() {
         return group;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
+    }
+
+    public void setMyClass(Class<?> myClass) {
+        this.myClass = myClass;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 
     //对外提供简易版构造方法

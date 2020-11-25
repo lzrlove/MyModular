@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/arouter_api/src/main/java/com/example/arouter_api/ARouterGroup.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/arouter_apis/src/main/java/com/lzr/arouter_apis/ARouterGroup.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/arouter_compiler/src/main/java/com/lzr/arouter_compiler/ARouterProcessor.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

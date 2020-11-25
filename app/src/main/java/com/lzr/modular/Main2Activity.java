@@ -1,14 +1,13 @@
 package com.lzr.modular;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzr.arouter_annotation.ARouter;
 
-
-@ARouter(path = "/app/MainActivity")
-public class MainActivity extends AppCompatActivity {
+@ARouter(path = "/app/Main2Activity")
+public class Main2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

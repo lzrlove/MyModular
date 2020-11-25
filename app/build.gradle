@@ -28,7 +28,7 @@ android {
         buildConfigField("boolean","isRelease",String.valueOf(isRelease))
         javaCompileOptions{
             annotationProcessorOptions{
-                arguments = [moduleName:project.getName()]
+                arguments = [moduleName:project.getName(),packageNameForAPT: packageNameForAPT]
             }
         }
     }

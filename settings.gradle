@@ -1,4 +1,4 @@
-include ':arouter_api'
+include ':arouter_apis'
 include ':arouter_compiler'
 include ':arouter_annotation'
 include ':common'

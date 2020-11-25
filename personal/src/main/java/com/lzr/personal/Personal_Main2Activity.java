@@ -1,13 +1,13 @@
 package com.lzr.personal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lzr.arouter_annotation.ARouter;
 
-@ARouter(path = "/personal/Personal_MainActivity")
-public class Personal_MainActivity extends AppCompatActivity {
+@ARouter(path = "/personal/Personal_Main2Activity")
+public class Personal_Main2Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

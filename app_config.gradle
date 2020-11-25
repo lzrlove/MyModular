@@ -5,6 +5,8 @@ ext {
     //区分正式环境和测试环境
     isRelease = true
 
+    packageNameForAPT = "com.lzr.modular"
+
     //Map存储
     app_android = [
             compileSdkVersion        : 30,

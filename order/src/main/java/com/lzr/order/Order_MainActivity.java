@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.lzr.arouter_annotation.ARouter;
+
+@ARouter(path = "/order/Order_MainActivity")
 public class Order_MainActivity extends AppCompatActivity {
 
     @Override

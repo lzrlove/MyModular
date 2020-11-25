@@ -1,4 +1,4 @@
-package com.example.arouter_api;
+package com.lzr.arouter_apis;
 
 import com.lzr.arouter_annotation.bean.RouterBean;
 
