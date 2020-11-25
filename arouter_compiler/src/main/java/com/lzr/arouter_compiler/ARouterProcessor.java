@@ -140,6 +140,7 @@ public class ARouterProcessor extends AbstractProcessor {
             } else {
                 messager.printMessage(Diagnostic.Kind.NOTE, "66 ====");
             }
+        }
 
 
             // 定义（生成类文件实现的接口） 有 Path Group
@@ -161,7 +162,6 @@ public class ARouterProcessor extends AbstractProcessor {
                 e.printStackTrace();
                 messager.printMessage(Diagnostic.Kind.NOTE, "88 Group file failed..");
             }
-        }
         return true;
     }
 
@@ -181,7 +181,7 @@ public class ARouterProcessor extends AbstractProcessor {
                 .returns(typeName);
 
         //Map<String, Class<? extends ARouterPath>> groupMap  = new HashMap<>();
-        methodSpec.addStatement("$T<$S,$T>$N = new $T<>()",
+        methodSpec.addStatement("$T<$T,$T>$N = new $T<>()",
                 ClassName.get(Map.class),
                 ClassName.get(String.class),
                 ParameterizedTypeName.get(ClassName.get(Class.class), WildcardTypeName.subtypeOf(ClassName.get(pathType))),
@@ -227,6 +227,7 @@ public class ARouterProcessor extends AbstractProcessor {
 
         //遍历缓存一
         for (Map.Entry<String, List<RouterBean>> entry : mAllPathMap.entrySet()) {
+            messager.printMessage(Diagnostic.Kind.NOTE, "for 循环");
             //方法
             MethodSpec.Builder methodSpec = MethodSpec.methodBuilder(ProcessorConfig.PATH_METHOD_NAME)
                     .addModifiers(Modifier.PUBLIC)
@@ -249,7 +250,7 @@ public class ARouterProcessor extends AbstractProcessor {
             //));多个
             List<RouterBean> pathList = entry.getValue();
             for (RouterBean bean : pathList) {
-                methodSpec.addStatement("$N.put($S,$T.create($T.$L,$T.class,$S,$S)",
+                methodSpec.addStatement("$N.put($S,$T.create($T.$L,$T.class,$S,$S))",
                         ProcessorConfig.PATH_VAR1,
                         bean.getPath(),
                         ClassName.get(RouterBean.class),
