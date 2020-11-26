@@ -91,7 +91,11 @@ public class ARouterProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        messager.printMessage(Diagnostic.Kind.NOTE, "33my annotation is running");
+
+        if(set.isEmpty()){
+            messager.printMessage(Diagnostic.Kind.NOTE, "second my annotation is running");
+            return false;
+        }
 
         //获取所有被 @ARouter 注解的 元素集合
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ARouter.class);

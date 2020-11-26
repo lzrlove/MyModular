@@ -42,4 +42,23 @@ public interface ProcessorConfig {
 
     // 路由组，GROUP 最终要生成的 文件名
     String GROUP_FILE_NAME = "ARouter$$Group$$";
+
+
+    // @Parameter注解 的 包名 + 类名
+    String PARAMETER_PACKAGE = "com.lzr.arouter_annotation.Parameter";
+
+    // ARouter api 的 ParameterGet 高层标准
+    String AROUTER_AIP_PARAMETER_GET = AROUTER_API_PACKAGE + ".ParameterGet";
+
+    // ARouter api 的 ParameterGet 方法参数的名字
+    String PARAMETER_NAME = "targetParameter";
+
+    // ARouter api 的 ParmeterGet 方法的名字
+    String PARAMETER_METHOD_NAME = "getParameter";
+
+    // ARouter aip 的 ParmeterGet 的 生成文件名称 $$Parameter
+    String PARAMETER_FILE_NAME = "$$Parameter";
+
+    // String全类名
+    public static final String STRING = "java.lang.String";
 }
